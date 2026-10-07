@@ -43,6 +43,10 @@ Next.js Frontend ──▶ Wallet Adapter ──▶ Anchor Program (PDAs: Config
 
 _(Full checklist: HunchQQDocs.md §9)_
 
+## Contributing
+
+Open source under the [MIT License](./LICENSE). See [CONTRIBUTING.md](./CONTRIBUTING.md) for setup and PR rules — good first issues are labelled [`good first issue`](https://github.com/BerlinDeskMudit/HunchQQ/issues?q=label%3A%22good+first+issue%22).
+
 ## License
 
 MIT
