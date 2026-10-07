@@ -1,0 +1,33 @@
+# Rust / Cargo
+target/
+
+# Anchor
+.anchor/
+test-ledger/
+**/*.rs.bk
+
+# Node
+node_modules/
+.next/
+out/
+build/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Env / secrets
+.env
+.env.local
+.env*.local
+*.pem
+id.json
+keypair.json
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
