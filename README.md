@@ -45,7 +45,7 @@ _(Full checklist: HunchQQDocs.md §9)_
 
 ## Contributing
 
-Open source under the [MIT License](./LICENSE). See [CONTRIBUTING.md](./CONTRIBUTING.md) for setup and PR rules — good first issues are labelled [`good first issue`](https://github.com/BerlinDeskMudit/HunchQQ/issues?q=label%3A%22good+first+issue%22).
+Open source under the [MIT License](./LICENSE). See [CONTRIBUTING.md](./CONTRIBUTING.md) for setup and PR rules — good first issues are labelled [`good first issue`](https://github.com/BerlinDeskMudit/HunchQQ/issues?q=label%3A%22good+first+issue%22). AI agents (Claude Code, Codex, Cursor, opencode): follow [AGENTS.md](./AGENTS.md).
 
 ## License
 
