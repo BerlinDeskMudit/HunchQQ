@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Guidance for AI coding agents (Claude Code, Codex, Cursor, opencode, etc.) working on this repo. Humans: see [CONTRIBUTING.md](./CONTRIBUTING.md). Full product/design spec: [HunchQQDocs.md](./HunchQQDocs.md).
+Guidance for AI coding agents (Claude Code, Codex, Cursor, opencode, etc.) working on this repo. Humans: see [CONTRIBUTING.md](./CONTRIBUTING.md). Full product/design spec: [docs/SPEC.md](./docs/SPEC.md).
 
 ## What this project is
 
@@ -13,7 +13,7 @@ HunchQQ — a parimutuel prediction-market dApp on Solana. Anchor (Rust) program
 3. **Checked arithmetic** in the program: `checked_add` / `checked_sub` / `checked_mul`, `u128` intermediates for payout math, round down (vault must never overpay).
 4. **Validate every account**: signer, PDA seeds/bumps, mint, token authority. No unchecked `remaining_accounts`.
 5. **Tests gate every program change.** `anchor test` must pass before a PR — including the negative/edge cases for whatever you touched.
-6. Keep the scope in `HunchQQDocs.md` (locked: Phase 1 MVP features, production-grade code, devnet). New features start as an issue.
+6. Keep the scope in `docs/SPEC.md` (locked: Phase 1 MVP features, production-grade code, devnet). New features start as an issue.
 
 ## Repo layout
 
@@ -32,7 +32,7 @@ app/                  # Next.js + TS + Tailwind frontend
 indexer/              # webhook handler + DB schema/migrations
 scripts/              # setup: devnet wallet, test USDC mint, faucet, resolver bot
 .github/workflows/    # CI: build + test + lint
-HunchQQDocs.md        # source of truth for design (§14 = build phases)
+docs/SPEC.md        # source of truth for design (§14 = build phases)
 ```
 
 ## Commands
@@ -53,7 +53,7 @@ Notes:
 
 ## On-chain conventions
 
-- **PDA seeds** (see HunchQQDocs.md §5.1): `Config` = `["config"]`, `Market` = `["market", id_le_bytes]`, `Vault` = `["vault", market]`, `Position` = `["position", market, user]`.
+- **PDA seeds** (see docs/SPEC.md §5.1): `Config` = `["config"]`, `Market` = `["market", id_le_bytes]`, `Vault` = `["vault", market]`, `Position` = `["position", market, user]`.
 - **Instruction flow**: each instruction is a struct with Anchor constraints; business logic stays small and reads from validated accounts.
 - **Status machine**: `Market.status` is `Open → Resolved | Cancelled`. Enforce: bets only when `Open` + before `end_time`; resolve only after `end_time`; resolve/cancel once; claim once (`claimed` flag).
 - **Payout** (§5.4): `user_payout = user_winning_stake * (total_pool - fee) / winning_pool`, `u128` math, floor division. If `winning_pool == 0`, treat as cancelled → refunds.
@@ -77,5 +77,5 @@ Notes:
 
 1. Code follows the conventions above.
 2. Tests added/updated and passing; edge cases for the changed path covered.
-3. Docs updated if behavior changed (`HunchQQDocs.md`, README, issue checklist ticked).
+3. Docs updated if behavior changed (`docs/SPEC.md`, README, issue checklist ticked).
 4. Nothing devnet-scoped leaked into mainnet direction; no secrets.

@@ -11,7 +11,7 @@ Thanks for your interest in contributing! This is a Solana prediction-market dAp
 ## Getting started
 
 1. Fork and clone the repo.
-2. Toolchain: Rust, Solana CLI (Agave), Anchor CLI, Node 20+ (see `HunchQQDocs.md` §3).
+2. Toolchain: Rust, Solana CLI (Agave), Anchor CLI, Node 20+ (see `docs/SPEC.md` §3).
 3. `anchor build && anchor test` must pass before you open a PR.
 
 ## How we work

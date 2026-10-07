@@ -5,4 +5,4 @@ This project uses [AGENTS.md](./AGENTS.md) as the single source of instructions 
 Quick reminder of the critical rules:
 - Devnet only, no secrets in git, checked math, every account validated.
 - `anchor build && anchor test` must pass for program changes.
-- Design source of truth: [HunchQQDocs.md](./HunchQQDocs.md); phases tracked in GitHub issues.
+- Design source of truth: [docs/SPEC.md](./docs/SPEC.md); phases tracked in GitHub issues.
