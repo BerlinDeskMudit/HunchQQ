@@ -1,8 +1,8 @@
-# HunchQQ
+# hunch-prediction-market
 
 > **Bet on anything, settle on-chain, trust no one.**
 
-[![CI](https://github.com/BerlinDeskMudit/HunchQQ/actions/workflows/ci.yml/badge.svg)](https://github.com/BerlinDeskMudit/HunchQQ/actions/workflows/ci.yml)
+[![CI](https://github.com/BerlinDeskMudit/hunch-prediction-market/actions/workflows/ci.yml/badge.svg)](https://github.com/BerlinDeskMudit/hunch-prediction-market/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Solana](https://img.shields.io/badge/Solana-devnet--only-14F195?logo=solana&logoColor=black)](https://api.devnet.solana.com)
 [![Anchor](https://img.shields.io/badge/Anchor-0.31-3E3E4E?logo=anchor&logoColor=white)](https://www.anchor-lang.com/)
@@ -144,8 +144,8 @@ A decentralized **prediction market** on Solana: users bet Yes/No on real-world 
 ### Build & test the program
 
 ```bash
-git clone https://github.com/BerlinDeskMudit/HunchQQ.git
-cd HunchQQ
+git clone https://github.com/BerlinDeskMudit/hunch-prediction-market.git
+cd hunch-prediction-market
 solana config set --url devnet      # always devnet
 anchor build
 anchor test
@@ -175,7 +175,7 @@ Live demo: **coming with Phase 6** · Program ID: **coming with Phase 6**
 ## Project structure
 
 ```
-HunchQQ/
+hunch-prediction-market/
 ├── programs/hunchqq/src/
 │   ├── lib.rs              # declare_id!, module wiring, #[program] entry
 │   ├── state/              # config.rs, market.rs, position.rs
@@ -231,7 +231,7 @@ user_payout   = user_winning_stake * payout_pool / winning_pool
 
 ## Roadmap
 
-Build is tracked as GitHub [issues](https://github.com/BerlinDeskMudit/HunchQQ/issues), one epic per phase:
+Build is tracked as GitHub [issues](https://github.com/BerlinDeskMudit/hunch-prediction-market/issues), one epic per phase:
 
 | Phase | Scope | Status |
 |---|---|---|
@@ -249,7 +249,7 @@ Build is tracked as GitHub [issues](https://github.com/BerlinDeskMudit/HunchQQ/i
 
 ## Contributing
 
-Open source under the [MIT License](./LICENSE). See [CONTRIBUTING.md](./CONTRIBUTING.md) for setup and PR rules — good first issues are labelled [`good first issue`](https://github.com/BerlinDeskMudit/HunchQQ/issues?q=label%3A%22good+first+issue%22). AI agents (Claude Code, Codex, Cursor, opencode): follow [AGENTS.md](./AGENTS.md).
+Open source under the [MIT License](./LICENSE). See [CONTRIBUTING.md](./CONTRIBUTING.md) for setup and PR rules — good first issues are labelled [`good first issue`](https://github.com/BerlinDeskMudit/hunch-prediction-market/issues?q=label%3A%22good+first+issue%22). AI agents (Claude Code, Codex, Cursor, opencode): follow [AGENTS.md](./AGENTS.md).
 
 ```bash
 git checkout -b feat/my-feature   # branch from main

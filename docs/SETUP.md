@@ -1,14 +1,14 @@
 # Toolchain Setup
 
-HunchQQ builds on **Windows (WSL2)**, **macOS**, and **Linux**. The program toolchain is Rust + Solana CLI (Agave) + Anchor; the frontend needs Node 20+.
+hunch-prediction-market builds on **Windows (WSL2)**, **macOS**, and **Linux**. The program toolchain is Rust + Solana CLI (Agave) + Anchor; the frontend needs Node 20+.
 
 > Solana CLI must stay pointed at **devnet**: `solana config set --url devnet`
 
 ## Option A — One-shot script (WSL / macOS / Linux)
 
 ```bash
-git clone https://github.com/BerlinDeskMudit/HunchQQ.git
-cd HunchQQ
+git clone https://github.com/BerlinDeskMudit/hunch-prediction-market.git
+cd hunch-prediction-market
 bash scripts/setup-wsl-toolchain.sh
 ```
 
