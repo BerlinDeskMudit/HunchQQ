@@ -1,0 +1,91 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  program:
+    name: Program (anchor build + test)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: program-${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      # anchor test runs `npx ts-mocha` from the repo root (tests/hunchqq.ts)
+      - name: Install test deps
+        run: npm ci
+
+      - name: Install Solana CLI
+        run: |
+          sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
+          echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
+
+      - name: Install Anchor
+        run: |
+          cargo install --git https://github.com/coral-xyz/anchor avm --force
+          avm install 0.31.1
+          avm use 0.31.1
+          echo "$HOME/.avm/bin" >> $GITHUB_PATH
+
+      - name: Clippy
+        run: cargo clippy --all-features -- -D warnings
+        continue-on-error: false
+
+      - name: Build
+        run: anchor build
+
+      # Keypairs are gitignored, so a fresh checkout starts from the
+      # placeholder id in declare_id!/Anchor.toml. Build once to materialize
+      # target/deploy/hunchqq-keypair.json, sync the ids to it, then test
+      # (anchor test rebuilds with the synced id).
+      - name: Sync program id
+        run: anchor keys sync
+
+      - name: Test
+        run: anchor test
+
+  frontend:
+    name: Frontend (lint + build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Skip when app/ not present
+        id: check
+        run: |
+          if [ -f package.json ]; then echo "exists=true" >> $GITHUB_OUTPUT; else echo "exists=false" >> $GITHUB_OUTPUT; fi
+
+      - if: steps.check.outputs.exists == 'true'
+        run: npm ci
+
+      - if: steps.check.outputs.exists == 'true'
+        run: npm run lint
+
+      - if: steps.check.outputs.exists == 'true'
+        run: npm run build

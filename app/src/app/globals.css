@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  font-feature-settings: "ss01";
+}
+
+.card {
+  @apply rounded-xl border border-edge bg-panel p-4 transition hover:border-accent/60;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-40;
+}
+
+.btn-primary {
+  @apply btn bg-accent text-white hover:bg-accent/80;
+}
+
+.btn-yes {
+  @apply btn bg-yes/90 text-ink hover:bg-yes;
+}
+
+.btn-no {
+  @apply btn bg-no/90 text-white hover:bg-no;
+}
+
+.btn-ghost {
+  @apply btn border border-edge text-gray-300 hover:border-accent hover:text-white;
+}
+
+.input {
+  @apply w-full rounded-lg border border-edge bg-ink px-3 py-2 text-sm outline-none placeholder:text-gray-600 focus:border-accent;
+}
+
+.badge {
+  @apply rounded border border-edge px-2 py-0.5 font-mono text-[10px] uppercase;
+}

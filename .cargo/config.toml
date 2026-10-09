@@ -1,0 +1,5 @@
+# Keep dependency versions compatible with Solana platform-tools cargo/rustc
+# (v1.43 ships Cargo 1.79, which cannot parse `edition = "2024"` manifests).
+# Cargo >= 1.84 honours this when generating/updating Cargo.lock.
+[resolver]
+incompatible-rust-versions = "fallback"
